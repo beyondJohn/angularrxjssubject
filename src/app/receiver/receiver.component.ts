@@ -17,7 +17,13 @@ export class ReceiverComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.subscription = this._subject.getMessage().subscribe(
       message => {
-        this.message = message.data;
+        if(message.data.text == "hello"){
+          this.message = "id: "+ message.data.data.id;
+        }
+        else if(message.data.text.indexOf("from sender") != '-1' )
+        {
+          this.message = message.data.text + ": " +  message.data.data.name;
+        }
       });
   }
   ngOnDestroy(){

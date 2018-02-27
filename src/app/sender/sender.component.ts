@@ -18,6 +18,9 @@ export class SenderComponent implements OnInit {
   }
   btn() {
     this.adder++;
-    this._subject.sendmessage("from sender " + this.adder);
+    this._subject.sendmessage({text:"from sender " + this.adder, data: {id:2, name: "Adrian"}} );
+  }
+  btnobj() {
+    this._subject.sendmessage({text:'hello', data: {id:1, name: "JP"}});
   }
 }
